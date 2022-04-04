@@ -1,12 +1,14 @@
 <h2>My Heroes</h2>
+<input id="hero-name" [(ngModel)]="listFilter" placeholder="Search" />
 <ul class="heroes">
-  <li *ngFor="let hero of heroes">
+  <li *ngFor="let hero of filteredHeroes">
     <button
       type="button"
       (click)="onSelect(hero)"
       [class.selected]="hero === selectedHero"
     >
-      <span class="badge">{{ hero.id }}</span> {{ hero.name | uppercase }}
+      <span class="badge">{{ hero.id }}</span>
+      {{ hero.name | convertToSpace: '_' | uppercase }}
     </button>
   </li>
 </ul>

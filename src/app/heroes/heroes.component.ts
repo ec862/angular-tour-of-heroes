@@ -9,12 +9,30 @@ import { HEROES } from '../mock-heroes';
 })
 export class HeroesComponent implements OnInit {
   public heroes: Hero[] = HEROES;
+  public filteredHeroes: Hero[] = [];
   public selectedHero?: Hero;
-  constructor() {}
+  private _ListFilter: string = '';
+  get listFilter(): string {
+    return this._ListFilter;
+  }
+  set listFilter(value: string) {
+    this._ListFilter = value;
+    this.filteredHeroes = this.PerformFilter(this._ListFilter);
+  }
 
-  ngOnInit(): void {}
+  constructor() {}
+  ngOnInit(): void {
+    this.listFilter = '';
+  }
 
   onSelect(hero: Hero): void {
     this.selectedHero = hero;
+  }
+
+  PerformFilter(filterBy: string): Hero[] {
+    filterBy = filterBy.toLocaleLowerCase();
+    return this.heroes.filter((hero: Hero) =>
+      hero.name.toLocaleLowerCase().includes(filterBy)
+    );
   }
 }

@@ -1,5 +1,5 @@
 /* Global Styles */
-@import '~/font-awesome/css/font-awesome.min.css';
+@import 'font-awesome/css/font-awesome.min.css';
 * {
   font-family: Arial, Helvetica, sans-serif;
 }
