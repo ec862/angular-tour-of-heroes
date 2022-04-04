@@ -5,4 +5,8 @@
     <label for="hero-name">Hero name: </label>
     <input id="hero-name" [(ngModel)]="hero.name" placeholder="name" />
   </div>
+  <div>
+    <label for="hero-power">Hero power: </label>
+    <app-star id="hero-power" [power]="hero.power"></app-star>
+  </div>
 </div>
