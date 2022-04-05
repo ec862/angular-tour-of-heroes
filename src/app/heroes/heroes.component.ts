@@ -37,13 +37,8 @@ export class HeroesComponent implements OnInit, OnDestroy {
     this.sub.unsubscribe();
   }
 
-  onSelect(hero: Hero): void {
-    this.selectedHero = hero;
-    this.messageService.add(`HeroesComponent: Selected hero id=${hero.id}`);
-  }
-
   getHeroes(): void {
-    this.heroService.getHeroes().subscribe((heroes) => {
+    this.sub = this.heroService.getHeroes().subscribe((heroes) => {
       this.heroes = heroes;
       this.listFilter = this.listFilter;
     });

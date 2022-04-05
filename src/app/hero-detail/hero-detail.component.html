@@ -7,6 +7,8 @@
   </div>
   <div>
     <label for="hero-power">Hero power: </label>
-    <app-star id="hero-power" [power]="hero.power"></app-star>
+    <app-star [power]="hero.power"></app-star>
+    <input type="number" id="hero-power" [(ngModel)]="hero.power" placeholder="power" />
   </div>
 </div>
+<button type="button" (click)="goBack()">Back</button>
