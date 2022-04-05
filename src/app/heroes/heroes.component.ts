@@ -15,6 +15,7 @@ export class HeroesComponent implements OnInit, OnDestroy {
   public selectedHero?: Hero;
   private _ListFilter: string = '';
   private sub!: Subscription;
+  private powerNum: number = 0;
   get listFilter(): string {
     return this._ListFilter;
   }
@@ -49,5 +50,24 @@ export class HeroesComponent implements OnInit, OnDestroy {
     return this.heroes.filter((hero: Hero) =>
       hero.name.toLocaleLowerCase().includes(filterBy)
     );
+  }
+
+  add(name: string, power: number): void {
+    name = name.trim();
+    if (name && power) {
+      this.heroService.addHero({ name, power } as Hero).subscribe((hero) => {
+        this.heroes.push(hero);
+      });
+    } else {
+      this.messageService.add(
+        `HerosComponent: Hero not Added - fields not filled`
+      );
+    }
+  }
+
+  delete(hero: Hero): void {
+    this.heroes = this.heroes.filter((h) => h !== hero);
+    this.filteredHeroes = this.PerformFilter(this._ListFilter);
+    this.heroService.deleteHero(hero.id).subscribe();
   }
 }

@@ -1,4 +1,21 @@
 <h2>My Heroes</h2>
+<div>
+  <label for="new-hero-name">Hero name: </label>
+  <input id="new-hero-name" #heroName />
+  <label for="new-hero-power">Hero Power: </label>
+  <input type="number" max="5" min="0" id="new-hero-power" #heroPower />
+  <button
+    type="button"
+    class="add-button"
+    (click)="
+      add(heroName.value, +heroPower.value);
+      heroName.value = '';
+      heroPower.value = ''
+    "
+  >
+    Add hero
+  </button>
+</div>
 <input id="hero-name" [(ngModel)]="listFilter" placeholder="Search" />
 <ul class="heroes">
   <li *ngFor="let hero of filteredHeroes">
@@ -7,6 +24,14 @@
       {{ hero.name | convertToSpace: '_' | uppercase }}
       <app-star [power]="hero.power"></app-star>
     </a>
+    <button
+      type="button"
+      class="delete"
+      title="delete hero"
+      (click)="delete(hero)"
+    >
+      x
+    </button>
   </li>
 </ul>
 
