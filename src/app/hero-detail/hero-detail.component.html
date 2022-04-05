@@ -8,7 +8,14 @@
   <div>
     <label for="hero-power">Hero power: </label>
     <app-star [power]="hero.power"></app-star>
-    <input type="number" id="hero-power" [(ngModel)]="hero.power" placeholder="power" />
+    <input
+      type="number"
+      max="5"
+      min="0"
+      id="hero-power"
+      [(ngModel)]="hero.power"
+      placeholder="power"
+    />
   </div>
 </div>
 <button type="button" (click)="goBack()">Back</button>
