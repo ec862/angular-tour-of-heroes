@@ -7,6 +7,7 @@ import { HeroesComponent } from './heroes/heroes.component';
 import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 import { ConvertToSpacesPipe } from './shared/convert-to-spaces.pipe';
 import { StarComponent } from './shared/star.component';
+import { MessagesComponent } from './messages/messages.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { StarComponent } from './shared/star.component';
     HeroDetailComponent,
     ConvertToSpacesPipe,
     StarComponent,
+    MessagesComponent,
   ],
   imports: [BrowserModule, FormsModule],
   providers: [],
